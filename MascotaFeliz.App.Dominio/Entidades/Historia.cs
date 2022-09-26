@@ -6,7 +6,7 @@ namespace MascotaFeliz.App.Dominio
     public class Historia
     {
         public int Id {get;set;}
-        public DateTime InitialDate {get;set;}
+        public DateTime FechaInicial {get;set;}
         public List<Visita> Visitas {get;set;}
 
     }

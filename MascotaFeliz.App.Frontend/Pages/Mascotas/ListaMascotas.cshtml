@@ -1,0 +1,79 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListaMascotasModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/StyleCMascotas.css" rel="stylesheet" type="text/css" />
+    <title>Consulta de mascotas</title>
+</head>
+<body background="~/lib/Images/wallhaven-1jjm5v.jpg">
+    <div class="Box">
+        <div class="top">
+            <h2>Consulta tus mascotas</h2>
+            <a class="btn home" asp-page="./EditarMascotas"><img src="~/lib/Images/mas.png" height="30" width="30"></a>
+        </div>
+        <div class="browser">
+            <form method="post">
+                <select name="ansType" id="ansType">
+                    <option value="n">Nombre</option>
+                    <option value="d">Dueño</option>
+                    <option value="v">Veterinario</option>
+                </select>
+                <input type="ans" id="ans" asp-for="Filtro" placeholder="consulte">
+                <input type="submit" value="Consultar">
+            </form>
+        </div>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr class="colums">
+                        <th scope="col"><strong>Id</strong></th>
+                        <th scope="col"><strong>Nombre</strong></th>
+                        <th scope="col"><strong>Color</strong></th>
+                        <th scope="col"><strong>Raza</strong></th>
+                        <th scope="col"><strong>Especie</strong></th>  
+                        <th scope="col"><strong>Dueño</strong></th>  
+                         <th scope="col"><strong>Veterinario</strong></th>      
+                        <th scope="col"><strong>Info</strong></th>
+                    </tr>
+                </thead>
+                <div class="Tbody">
+                    <tbody>
+                        @foreach (var mascota in Model.listaMascotas)
+                        {
+                            <tr class="rows">
+                                <th scope="row">@mascota.Id</th>
+                                <td>@mascota.Nombre</td>
+                                <td>@mascota.Color</td>
+                                <td>@mascota.Raza</td>
+                                <td>@mascota.Especie</td>
+                                <td>@mascota.Dueno.Nombre</td>
+                                <td>@mascota.Veterinario.Nombre</td>
+                                <td>
+                                    <a class="btn" asp-page="./DetallesMascota" asp-route-IdMascota="@mascota.Id">
+                                        Detalle
+                                    </a>
+                                    <a class="btn" asp-page="./EditarMascotas" asp-route-idMascota="@mascota.Id">
+                                        Editar
+                                    </a>
+                                    <a class="btn" asp-page="./Asignar" asp-route-idMascota="@mascota.Id">
+                                        Asignar
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </div>
+                                
+            </table>
+        </div>
+    </div>
+</body>
+</html>

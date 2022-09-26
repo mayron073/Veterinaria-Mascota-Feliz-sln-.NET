@@ -13,7 +13,7 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    InitialDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FechaInicial = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,13 +26,13 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direction = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProfessionalCard = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TarjetaProfesional = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -45,14 +45,14 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    VisitDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Temperature = table.Column<float>(type: "real", nullable: false),
-                    Weight = table.Column<float>(type: "real", nullable: false),
-                    BreathingFrequency = table.Column<float>(type: "real", nullable: false),
-                    HeartRate = table.Column<float>(type: "real", nullable: false),
-                    MindState = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaDeVisita = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Temperatura = table.Column<float>(type: "real", nullable: false),
+                    Peso = table.Column<float>(type: "real", nullable: false),
+                    FrecuenciaRespiratoria = table.Column<float>(type: "real", nullable: false),
+                    FrecuenciaCardiaca = table.Column<float>(type: "real", nullable: false),
+                    EstadoMental = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdVeterinario = table.Column<int>(type: "int", nullable: false),
-                    Recommendations = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Recomendaciones = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HistoriaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -72,10 +72,10 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Breed = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Raze = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Especie = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Raza = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DuenoId = table.Column<int>(type: "int", nullable: true),
                     VeterinarioId = table.Column<int>(type: "int", nullable: true),
                     HistoriaId = table.Column<int>(type: "int", nullable: true)

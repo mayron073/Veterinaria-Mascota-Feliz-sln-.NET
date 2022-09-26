@@ -1,0 +1,46 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.AsignarModel
+@{
+    int idMascota = Model.mascota.Id;
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/Style.css">
+    </head>
+
+    <body>
+        <div class="box">
+            <h1 class="A">Asignar</h1>
+            <form method="post" class="form-group">  
+                <input type="hidden" asp-for ="mascota.Id">
+                <div class="browser">
+                    <label asp-for="mascota.Nombre"></label>
+                    <input asp-for="mascota.Nombre" class="form-control" disabled readonly>
+                    <label asp-for="mascota.Dueno.Id">Dueños</label>
+                    <select class="form-control" id="dueno" asp-for="mascota.Dueno.Id" name="duenoId">
+                        <option value="0">--Selecciona--</option>
+                        @foreach (var duenos in Model.listaDuenos)
+                        {
+                            <option value="@duenos.Id">@duenos.Nombre @duenos.Apellido</option>
+                        }
+                    </select>                   
+                </div>  
+                <div>
+                    <label asp-for="mascota.Veterinario.Id">Veterinarios</label>
+                    <select class="form-control" id="veterinario" asp-for="mascota.Veterinario.Id" name="veterinarioId">
+                        <option value="0">--Veterinarios--</option>
+                        @foreach (var veterinarios in Model.listaVeterinarios)
+                        {
+                            <option value="@veterinarios.Id">@veterinarios.Nombre @veterinarios.Apellido</option>
+                        }
+                    </select>
+                </div>
+                <input type="submit" value="Guardar">
+            </form>
+           
+        </div>
+
+    </body>
+</html>
+

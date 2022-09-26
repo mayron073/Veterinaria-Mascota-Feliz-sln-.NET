@@ -1,0 +1,77 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.EditarMascotasModel
+@{
+    int idMascota = Model.mascota.Id;
+}
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="~/css/Style.css">
+    </head>
+
+    <body>
+        <div class="box">
+            <img class="img" src="~/lib/Images/pngegg.png" alt="">
+            <h1 class="A">Registro de mascotas</h1>
+            <form method="post" class="form-group">
+                <div class="inputs Id" >
+                    <!--ID-->
+                    <input type="hidden" asp-for ="mascota.Id" class="id">
+                </div>
+                <div class="inputs name">
+                    <!--nombre-->                 
+                    <label asp-for="mascota.Nombre"></label>
+                    <input asp-for="mascota.Nombre" class="form-control">
+                </div>
+                <div class="inputs color">
+                    <!--Color-->
+                    <label asp-for="mascota.Color"></label>
+                    <input asp-for="mascota.Color" class="form-control">
+                </div>
+                <div class="inputs raza">
+                    <!--Raza-->
+                    <label asp-for="mascota.Raza"></label>
+                    <input asp-for="mascota.Raza" class="form-control" >
+                </div>
+                <div class="inputs especie">
+                    <!--Especie-->
+                    <label asp-for="mascota.Especie"></label>
+                    <input asp-for="mascota.Especie" class="form-control">
+                </div>
+                <div class="inputs fechaInicial">
+                    <!--Especie-->
+                    <label asp-for="mascota.Historia.FechaInicial"></label>
+                    <input asp-for="mascota.Historia.FechaInicial" class="form-control">
+                </div>
+                <div class="browser">
+                    <label asp-for="mascota.Dueno.Id">Dueños</label>
+                    <select class="form-control" id="dueno" asp-for="mascota.Dueno.Id" name="duenoId">
+                        <option value="0">--Selecciona--</option>
+                        @foreach (var duenos in Model.listaDuenos)
+                        {
+                            <option value="@duenos.Id">@duenos.Nombre @duenos.Apellido</option>
+                        }
+                    </select>                   
+                </div>  
+                <div>
+                    <label asp-for="mascota.Veterinario.Id">Veterinarios</label>
+                    <select class="form-control" id="veterinario" asp-for="mascota.Veterinario.Id" name="veterinarioId">
+                        <option value="0">--Selecciona--</option>
+                        @foreach (var veterinarios in Model.listaVeterinarios)
+                        {
+                            <option value="@veterinarios.Id">@veterinarios.Nombre @veterinarios.Apellido</option>
+                        }
+                    </select>
+                </div>
+                 <div class="botones">
+                    <!--boton-->
+                    <input type="submit" value="Guardar">
+                </div>  
+                                              
+            </form>
+           
+        </div>
+
+    </body>
+</html>

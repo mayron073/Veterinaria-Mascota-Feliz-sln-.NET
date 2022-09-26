@@ -26,7 +26,7 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("InitialDate")
+                    b.Property<DateTime>("FechaInicial")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -41,22 +41,22 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Breed")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DuenoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Especie")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("HistoriaId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Raze")
+                    b.Property<string>("Raza")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("VeterinarioId")
@@ -80,20 +80,20 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Direction")
+                    b.Property<string>("Apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
+                    b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -110,10 +110,16 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<float>("BreathingFrequency")
+                    b.Property<string>("EstadoMental")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaDeVisita")
+                        .HasColumnType("datetime2");
+
+                    b.Property<float>("FrecuenciaCardiaca")
                         .HasColumnType("real");
 
-                    b.Property<float>("HeartRate")
+                    b.Property<float>("FrecuenciaRespiratoria")
                         .HasColumnType("real");
 
                     b.Property<int?>("HistoriaId")
@@ -122,19 +128,13 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                     b.Property<int>("IdVeterinario")
                         .HasColumnType("int");
 
-                    b.Property<string>("MindState")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Recommendations")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Temperature")
+                    b.Property<float>("Peso")
                         .HasColumnType("real");
 
-                    b.Property<DateTime>("VisitDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Recomendaciones")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Weight")
+                    b.Property<float>("Temperatura")
                         .HasColumnType("real");
 
                     b.HasKey("Id");
@@ -148,7 +148,7 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     b.HasBaseType("MascotaFeliz.App.Dominio.Persona");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("Correo")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Dueno");
@@ -158,7 +158,7 @@ namespace MascotaFeliz.App.Persistencia.Migrations
                 {
                     b.HasBaseType("MascotaFeliz.App.Dominio.Persona");
 
-                    b.Property<string>("ProfessionalCard")
+                    b.Property<string>("TarjetaProfesional")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Veterinario");

@@ -24,6 +24,7 @@ namespace MascotaFeliz.App.Persistencia
             _appContext = appContext;
         }
 
+//  Agregar una nueva visita.
         public Visita AddVisita(Visita visita)
         {
             var visitaEncontrada = _appContext.Visitas.Add(visita);
@@ -31,6 +32,7 @@ namespace MascotaFeliz.App.Persistencia
             return visitaEncontrada.Entity;
         }
 
+//  Eliminar una visita.
         public void DeleteVisita(int idVisita)
         {
             var visitaEncontrada = _appContext.Visitas.FirstOrDefault(d => d.Id == idVisita);
@@ -42,9 +44,10 @@ namespace MascotaFeliz.App.Persistencia
             _appContext.SaveChanges();
         }
 
-        public Visita UpdateVisita(Visita visita, int idVisita)
+//  Actualizar una visita.
+        public Visita UpdateVisita(Visita visita)
         {
-            var visitaEncontrada = _appContext.Visitas.FirstOrDefault(d => d.Id == idVisita);
+            var visitaEncontrada = _appContext.Visitas.FirstOrDefault(d => d.Id == visita.Id);
             if (visitaEncontrada != null)
             {
                 visitaEncontrada.FechaDeVisita = visita.FechaDeVisita;
@@ -54,13 +57,14 @@ namespace MascotaFeliz.App.Persistencia
                 visitaEncontrada.FrecuenciaCardiaca = visita.FrecuenciaCardiaca;
                 visitaEncontrada.EstadoMental = visita.EstadoMental;
                 visitaEncontrada.Recomendaciones = visita.Recomendaciones;
-                //visitaEncontrada.IdVeterinario = visita.IdVeterinario;
+                visitaEncontrada.IdVeterinario = visita.IdVeterinario;
 
                 _appContext.SaveChanges();
             }
             return visitaEncontrada;
         }
 
+//  Retornar una visita.
         public Visita GetVisita(int idVisita)
         {
             return _appContext.Visitas.FirstOrDefault(d => d.Id == idVisita);
@@ -69,19 +73,6 @@ namespace MascotaFeliz.App.Persistencia
         public IEnumerable<Visita> GetAllVisitas()
         {
             return _appContext.Visitas;
-        }
-
-        public IEnumerable<Visita> GetVisitasPorFiltro(string filtro)
-        {
-            var visita = GetAllVisitas(); // Obtiene todos los saludos
-           /* if (visita != null)  //Si se tienen saludos
-            {
-                if (!String.IsNullOrEmpty(filtro)) // Si el filtro tiene algun valor
-                {
-                    visita = visita.Where(s => s.Nombre.Contains(filtro));
-                }
-            }*/
-            return visita;
         }
 
     }

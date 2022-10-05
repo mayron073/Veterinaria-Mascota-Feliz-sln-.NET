@@ -17,6 +17,7 @@ namespace MascotaFeliz.App.Persistencia
         Historia AsignarHistoria(int idHistoria, int idMascota);
         Dueno AsignarDueno(int idDueno, int idMascota);
         Veterinario AsignarVeterinario(int idVeterinario, int idMascota);
-        //int GetDuenoId(int idMascota);
+        IEnumerable<Mascota> GetHistoriaMascota(int mascotaId);
+        int GetHistoriaId(int mascotaId);
     }
 }

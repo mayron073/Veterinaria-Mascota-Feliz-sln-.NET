@@ -1,0 +1,57 @@
+body {
+    background-color: #d0e7e8;
+}
+
+.box {
+    margin-top: 20px;
+    position: absolute;
+    background: #D3CEDF;   
+    box-shadow: 2px 2px 5px rgb(62, 65, 255); 
+    border-radius: 10px 10px;
+    width: 500px;
+    height: 460px;
+    left: 30%;
+}
+
+.top{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.img-pet {
+    height: 80px;
+}
+
+h4 {
+    padding-top: 5px;
+    color: black;
+}
+
+.info {
+    margin-left: 40px;
+    color: #0F3460;
+    text-shadow: 1px 1px 1px white;
+}
+
+.info div {
+    padding-bottom: 10px;
+}
+
+.btn-default {
+    position: absolute;
+    left: 35%;
+    margin-top: 20px;
+    padding: 10px;
+    color: #0F3460;
+    background: #319DA0;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px 20px;
+    box-shadow: 3px 5px 10px gray;
+}
+
+.btn-default:hover{
+    background: #7FBCD2;
+    
+}

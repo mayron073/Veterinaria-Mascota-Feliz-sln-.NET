@@ -1,0 +1,85 @@
+body {
+    background-color: #d0e7e8;
+    font-family: 'Rock Salt', cursive;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box {
+    margin-top: 20px;
+    position: relative;
+    background: #D3CEDF;   
+    box-shadow: 2px 2px 5px rgb(62, 65, 255); 
+    border-radius: 10px 10px;
+    width: 550px;
+    height: 470px;
+    left: 28%;
+}
+
+.box .img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 220px;
+    width: 100px;
+    height: 90px;
+}
+
+.box h1{
+    color: #0F3460;
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    margin: 5px 0px 20px;
+}
+
+.form-control {
+    border: none;   
+    width: 70%;
+    margin-right: 30px;
+    margin-left: 40px;
+    margin-top: 0px;
+    outline-color: #0AA1DD;
+    border-radius: 6px 6px;
+    background: #F0F0F0;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #0F3460;
+}
+
+label {
+    margin-bottom: 0px;
+    margin-top: 15px;
+    font-size: 12px;
+    margin-left: 45px;
+    width: 90%
+}
+
+/*edit boton*/
+.box input[type = 'submit'] {
+    text-align: center;
+    border: none;
+    width: 80px;
+    padding: 10px;
+    color: #0F3460;
+    background: #319DA0;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 15px 15px;
+    box-shadow: 3px 5px 10px gray;
+}
+
+.box input[type = 'submit']{
+    position: absolute;
+    right: 235px;
+    margin-top: 120px;
+}
+
+.box input[type = 'submit']:hover {
+    background: #7FBCD2;
+}
+

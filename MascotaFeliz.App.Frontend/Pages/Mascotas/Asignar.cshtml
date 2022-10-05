@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="~/css/Style.css">
+        <link rel="stylesheet" href="~/css/StyleAsignar.css">
     </head>
 
     <body>
@@ -35,6 +35,11 @@
                             <option value="@veterinarios.Id">@veterinarios.Nombre @veterinarios.Apellido</option>
                         }
                     </select>
+                </div>
+                <div class="inputs fechaInicial">
+                    <!--Historia-->
+                    <label asp-for="mascota.Historia.FechaInicial">Historia medica</label>
+                    <input type="datetime-local" asp-for="mascota.Historia.FechaInicial" class="form-control" name="historiaDT">
                 </div>
                 <input type="submit" value="Guardar">
             </form>

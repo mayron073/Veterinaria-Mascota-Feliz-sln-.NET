@@ -3,23 +3,56 @@
 @{
     int idDueno = Model.dueno.Id;
 }
-<h2>Agragar o editar duneños</h2>
 
-<form method="post">
-    <div class="form-group">
-        <input type="hiden" asp-for = "dueno.Id">
-        <label asp-for="dueno.Nombre"></label>
-        <input asp-for="dueno.Nombre" class="form-control">
-        <label asp-for="dueno.Apellido"></label>
-        <input asp-for="dueno.Apellido" class="form-control">
-        <label asp-for="dueno.Telefono"></label>
-        <input asp-for="dueno.Telefono" class="form-control">
-        <label asp-for="dueno.Direccion"></label>
-        <input asp-for="dueno.Direccion" class="form-control">
-        <label asp-for="dueno.Correo"></label>
-        <input asp-for="dueno.Correo" class="form-control">
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="~/css/StyleFormDueno.css">
+    </head>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="./ListaDuenos" class="btn-default">Lista de duneños</a>
-    </div>
-</form>
+    <body>
+        <div class="box">
+            <img class="img" src="~/lib/Images/employee1.png" alt="">
+            <h1 class="A">Registro de Dueños</h1>
+            <form method="post" class="form-group">
+                <div class="inputs Id" >
+                    <!--ID-->
+                    <input type="hidden" asp-for ="dueno.Id" class="id">
+                </div>
+                <div class="inputs">
+                    <!--nombre-->                 
+                    <label asp-for="dueno.Nombre"></label>
+                    <input asp-for="dueno.Nombre" class="form-control">
+                </div>
+                <div class="inputs">
+                    <!--Apellido-->
+                    <label asp-for="dueno.Apellido"></label>
+                    <input asp-for="dueno.Apellido" class="form-control">
+                </div>
+                <div class="inputs">
+                    <!--Telefono-->
+                    <label asp-for="dueno.Telefono"></label>
+                    <input asp-for="dueno.Telefono" class="form-control" >
+                </div>
+                <div class="inputs">
+                    <!--Direccion-->
+                    <label asp-for="dueno.Direccion"></label>
+                    <input asp-for="dueno.Direccion" class="form-control">
+                </div>
+                <div class="inputs">
+                    <!--Correo-->
+                    <label asp-for="dueno.Correo"></label>
+                    <input asp-for="dueno.Correo" class="form-control">
+                </div>
+                 <div class="botones">
+                    <!--boton-->
+                    <input type="submit" value="Guardar">
+                </div>  
+                                              
+            </form>
+           
+        </div>
+
+    </body>
+</html>

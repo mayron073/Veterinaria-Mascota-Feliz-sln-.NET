@@ -19,51 +19,56 @@
                     <!--ID-->
                     <input type="hidden" asp-for ="mascota.Id" class="id">
                 </div>
-                <div class="inputs name">
-                    <!--nombre-->                 
-                    <label asp-for="mascota.Nombre"></label>
-                    <input asp-for="mascota.Nombre" class="form-control">
+                <div class="col1">
+                     <div class="inputs name">
+                        <!--nombre-->                 
+                        <label asp-for="mascota.Nombre"></label>
+                        <input asp-for="mascota.Nombre" class="form-control">
+                    </div>
+                    <div class="inputs color">
+                        <!--Color-->
+                        <label asp-for="mascota.Color"></label>
+                        <input asp-for="mascota.Color" class="form-control">
+                    </div>
+                    <div class="inputs raza">
+                        <!--Raza-->
+                        <label asp-for="mascota.Raza"></label>
+                        <input asp-for="mascota.Raza" class="form-control" >
+                    </div>
+                    <div class="inputs especie">
+                        <!--Especie-->
+                        <label asp-for="mascota.Especie"></label>
+                        <input asp-for="mascota.Especie" class="form-control">
+                    </div>
                 </div>
-                <div class="inputs color">
-                    <!--Color-->
-                    <label asp-for="mascota.Color"></label>
-                    <input asp-for="mascota.Color" class="form-control">
+                <div class="col2">
+                    <div class="inputs fechaInicial">
+                        <!--Historia-->
+                        <label asp-for="mascota.Historia.FechaInicial"></label>
+                        <input type="datetime-local" asp-for="mascota.Historia.FechaInicial" class="form-control" name="historiaDT">
+                    </div>
+                    <div class="browser">
+                        <label asp-for="mascota.Dueno.Id">Dueños</label>
+                        <select class="form-control" id="dueno" asp-for="mascota.Dueno.Id" name="duenoId">
+                            <option value="0">--Selecciona--</option>
+                            @foreach (var duenos in Model.listaDuenos)
+                            {
+                                <option value="@duenos.Id">@duenos.Nombre @duenos.Apellido</option>
+                            }
+                        </select>                   
+                    </div>  
+                    <div>
+                        <label asp-for="mascota.Veterinario.Id">Veterinarios</label>
+                        <select class="form-control" id="veterinario" asp-for="mascota.Veterinario.Id" name="veterinarioId">
+                            <option value="0">--Selecciona--</option>
+                            @foreach (var veterinarios in Model.listaVeterinarios)
+                            {
+                                <option value="@veterinarios.Id">@veterinarios.Nombre @veterinarios.Apellido</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-                <div class="inputs raza">
-                    <!--Raza-->
-                    <label asp-for="mascota.Raza"></label>
-                    <input asp-for="mascota.Raza" class="form-control" >
-                </div>
-                <div class="inputs especie">
-                    <!--Especie-->
-                    <label asp-for="mascota.Especie"></label>
-                    <input asp-for="mascota.Especie" class="form-control">
-                </div>
-                <div class="inputs fechaInicial">
-                    <!--Especie-->
-                    <label asp-for="mascota.Historia.FechaInicial"></label>
-                    <input asp-for="mascota.Historia.FechaInicial" class="form-control">
-                </div>
-                <div class="browser">
-                    <label asp-for="mascota.Dueno.Id">Dueños</label>
-                    <select class="form-control" id="dueno" asp-for="mascota.Dueno.Id" name="duenoId">
-                        <option value="0">--Selecciona--</option>
-                        @foreach (var duenos in Model.listaDuenos)
-                        {
-                            <option value="@duenos.Id">@duenos.Nombre @duenos.Apellido</option>
-                        }
-                    </select>                   
-                </div>  
-                <div>
-                    <label asp-for="mascota.Veterinario.Id">Veterinarios</label>
-                    <select class="form-control" id="veterinario" asp-for="mascota.Veterinario.Id" name="veterinarioId">
-                        <option value="0">--Selecciona--</option>
-                        @foreach (var veterinarios in Model.listaVeterinarios)
-                        {
-                            <option value="@veterinarios.Id">@veterinarios.Nombre @veterinarios.Apellido</option>
-                        }
-                    </select>
-                </div>
+                
                  <div class="botones">
                     <!--boton-->
                     <input type="submit" value="Guardar">

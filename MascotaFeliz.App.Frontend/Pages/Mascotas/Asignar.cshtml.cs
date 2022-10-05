@@ -15,11 +15,13 @@ namespace MascotaFeliz.App.Frontend.Pages
         private readonly IRepositorioMascota _repoMascota;
         private static IRepositorioDueno _repoDueno = new RepositorioDueno(new Persistencia.AppContext()); 
         private static IRepositoriVeterinario _repoVeterinario = new RepositorioVeterinario(new Persistencia.AppContext());
+        private static IRepositorioHistoria _repoHistoria = new RepositorioHistoria(new Persistencia.AppContext()); 
 
         [BindProperty]
         public Mascota mascota {get;set;}
         public Veterinario veterinario {get;set;}
         public Dueno dueno {get;set;}
+         public Historia historia {get;set;}
 
         public IEnumerable<Dueno> listaDuenos {get;set;}
         public IEnumerable<Veterinario> listaVeterinarios {get;set;}
@@ -50,7 +52,7 @@ namespace MascotaFeliz.App.Frontend.Pages
             
         }
 
-        public IActionResult OnPost(int duenoId, int veterinarioId)
+        public IActionResult OnPost(int duenoId, int veterinarioId, DateTime historiaDT)
         {
             if (!ModelState.IsValid)
             {
@@ -58,6 +60,9 @@ namespace MascotaFeliz.App.Frontend.Pages
             }
             if (mascota.Id > 0)
             {
+                historia = new Historia();
+                historia.FechaInicial = historiaDT;
+                _repoHistoria.UpdateHistoria(historia);
                 _repoMascota.AsignarDueno(duenoId, mascota.Id);
                 _repoMascota.AsignarVeterinario(veterinarioId, mascota.Id);
 

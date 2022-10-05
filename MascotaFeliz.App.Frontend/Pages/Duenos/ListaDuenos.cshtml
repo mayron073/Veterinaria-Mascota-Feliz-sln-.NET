@@ -5,28 +5,27 @@
 
 <html>
     <head>
-        <link href="~/css/StyleCMascotas.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/StyleCDueno.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div class="Box">
              <div class="top">
-                <h2>lista de dueños</h2>
+                <h2>Lista de Dueños</h2>
                 <a class="btn home" sp-area="" asp-page="./EditarDuenos"><img src="~/lib/Images/mas.png" height="30" width="30"></a>
             </div>
             <table class="table">
                 <thead>
                     <tr class="colums">
-                        <th scope="col"><strong>Id</strong></th>
                         <th scope="col"><strong>Nombre</strong></th>
                         <th scope="col"><strong>Apellido</strong></th>
                         <th scope="col"><strong>Correo</strong></th>
+                        <th scope="col"><strong>Info</strong></th>   
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var dueno in Model.listaDuenos)
                         {
                             <tr class="rows">
-                                <th scope="row">@dueno.Id</th>
                                 <td>@dueno.Nombre</td>
                                 <td>@dueno.Apellido</td>
                                 <td>@dueno.Correo</td>
@@ -34,8 +33,6 @@
                                     <a class="btn" asp-page="./DetallesDueno" asp-route-IdDueno="@dueno.Id">
                                                 Detalle
                                     </a>
-                                </td>
-                                <td>
                                     <a class="btn" asp-page="./EditarDuenos" asp-route-duenoId="@dueno.Id">
                                         Editar
                                     </a>
@@ -48,5 +45,4 @@
     </body>
 </html>
 
-<!--<a class = "btn btn-primary table-btn" asp-page="./EditarDuenos" class="btn-default">Adicionar Dueño</a>-->
             

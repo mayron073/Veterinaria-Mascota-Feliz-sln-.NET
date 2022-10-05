@@ -4,23 +4,51 @@
     int idVeterinario = Model.veterinario.Id;
 }
 
-<h2>Agragar o editar veterinario</h2>
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="~/css/StyleFormVet.css">
+    </head>
 
-<form method="post">
-    <div class="form-group">
-        <input type="hiden" asp-for = "veterinario.Id">
-        <label asp-for="veterinario.Nombre"></label>
-        <input asp-for="veterinario.Nombre" class="form-control">
-        <label asp-for="veterinario.Apellido"></label>
-        <input asp-for="veterinario.Apellido" class="form-control">
-        <label asp-for="veterinario.Telefono"></label>
-        <input asp-for="veterinario.Telefono" class="form-control">
-        <label asp-for="veterinario.Direccion"></label>
-        <input asp-for="veterinario.Direccion" class="form-control">
-        <label asp-for="veterinario.TarjetaProfesional"></label>
-        <input asp-for="veterinario.TarjetaProfesional" class="form-control">
+    <body>
+        <div class="box">
+            <img class="img" src="~/lib/Images/employee1.png" alt="">
+            <h1 class="A">Registro de veterinarios</h1>
+            <form method="post" class="form-group">
+                <div class="inputs Id" >
+                    <!--ID-->
+                    <input type="hidden" asp-for ="veterinario.Id" class="id">
+                </div>
+                <div class="inputs">               
+                    <label asp-for="veterinario.Nombre"></label>
+                    <input asp-for="veterinario.Nombre" class="form-control">
+                </div>
+                <div class="inputs">
+                    <label asp-for="veterinario.Apellido"></label>
+                    <input asp-for="veterinario.Apellido" class="form-control">
+                </div>
+                <div class="inputs">
+                    <label asp-for="veterinario.Telefono"></label>
+                    <input asp-for="veterinario.Telefono" class="form-control" >
+                </div>
+                <div class="inputs">
+                    <label asp-for="veterinario.Direccion"></label>
+                    <input asp-for="veterinario.Direccion" class="form-control">
+                </div>
+                <div class="inputs">
+                    <label asp-for="veterinario.TarjetaProfesional"></label>
+                    <input asp-for="veterinario.TarjetaProfesional" class="form-control">
+                </div>
+                 <div class="botones">
+                    <input type="submit" value="Guardar">
+                </div>  
+                                              
+            </form>
+           
+        </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="./ListaVeterinarios" class="btn-default">Lista de veterinarios</a>
-    </div>
-</form>
+    </body>
+</html>
+
+

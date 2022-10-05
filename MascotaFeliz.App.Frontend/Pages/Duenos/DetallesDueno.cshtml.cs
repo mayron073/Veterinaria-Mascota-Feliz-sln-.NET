@@ -13,6 +13,7 @@ namespace MascotaFeliz.App.Frontend.Pages
     {
         private readonly IRepositorioDueno _repoDueno;
         public Dueno dueno {get;set;}
+        
         public DetallesDuenoModel()
         {
             this._repoDueno = new RepositorioDueno(new Persistencia.AppContext());

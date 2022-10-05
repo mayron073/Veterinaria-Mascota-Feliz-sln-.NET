@@ -1,0 +1,48 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.DetallesVisitaModel
+@{
+}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/StyleDetalles.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="top">
+                <h4>Informacion de la visita</h4>
+            </div>
+            <div class="info">
+                <div>
+                    Id: @Model.visita.Id
+                </div>
+                <div>
+                    Fecha: @Model.visita.FechaDeVisita
+                </div>
+                <div>
+                    Peso: @Model.visita.Peso Kg
+                </div>
+                <div>
+                    Temperatura: @Model.visita.Temperatura
+                </div>
+                <div>
+                    Frecuencia Respiratoria: @Model.visita.FrecuenciaRespiratoria
+                </div>
+                <div>
+                    Frecuencia Cardiaca: @Model.visita.FrecuenciaCardiaca
+                </div>
+                <div>
+                    Estado Mental: @Model.visita.EstadoMental
+                </div>
+                <div>
+                    Recomendaciones: @Model.visita.Recomendaciones
+                </div>
+                <div>
+                    Veterinario: @Model.veterinario.Nombre @Model.veterinario.Apellido 
+                </div>
+            </div>        
+            <a class="btn-default" asp-page="/Mascotas/ListaMascotas" >Lista de Mascotas</a>
+        </div>
+    </body>
+</html>
+

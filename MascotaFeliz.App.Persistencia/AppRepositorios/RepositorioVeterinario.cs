@@ -9,7 +9,7 @@ namespace MascotaFeliz.App.Persistencia
     public class RepositorioVeterinario : IRepositoriVeterinario
     {
         /// <summary>
-        /// Referencia al contexto de Dueno
+        /// Referencia al contexto
         /// </summary>
         private readonly AppContext _appContext;
         /// <summary>
@@ -23,6 +23,7 @@ namespace MascotaFeliz.App.Persistencia
             _appContext = appContext;
         }
 
+//  Metodo que agrega un nuevo veterinario.
         public Veterinario AddVeterinario(Veterinario veterinario)
         {
             var veterinarioAdicionado = _appContext.Veterinarios.Add(veterinario);
@@ -30,6 +31,7 @@ namespace MascotaFeliz.App.Persistencia
             return veterinarioAdicionado.Entity;
         }
 
+//  Metodo que elimina un vetrinario.
         public void DeleteVeterinario(int idVeterinario)
         {
             var veterinarioEncontrado = _appContext.Veterinarios.FirstOrDefault(d => d.Id == idVeterinario);
@@ -39,15 +41,17 @@ namespace MascotaFeliz.App.Persistencia
             _appContext.SaveChanges();
         }
 
+//  Metodo que retorna una lista de todos los vetrinarios.
        public IEnumerable<Veterinario> GetAllVeterinario()
         {
-            return GetAllVeterinario_();
+            return _appContext.Veterinarios;
         }
 
+//  Metodo que retorna una lista de vaterinarios filtrados por nombre.
         public IEnumerable<Veterinario> GetVeterinarioPorFiltro(string filtro)
         {
-            var Veterinarios = GetAllVeterinario(); // Obtiene todos los saludos
-            if (Veterinarios != null)  //Si se tienen saludos
+            var Veterinarios = GetAllVeterinario();
+            if (Veterinarios != null)  
             {
                 if (!String.IsNullOrEmpty(filtro)) // Si el filtro tiene algun valor
                 {
@@ -57,16 +61,13 @@ namespace MascotaFeliz.App.Persistencia
             return Veterinarios;
         }
 
-        public IEnumerable<Veterinario> GetAllVeterinario_()
-        {
-            return _appContext.Veterinarios;
-        }
-
+//  Metodo que retorna un veterinario.
         public Veterinario GetVeterinario(int idVeterinario)
         {
             return _appContext.Veterinarios.FirstOrDefault(d => d.Id == idVeterinario);
         }
 
+//  Metodo que actualiza un veterinario.
         public Veterinario UpdateVeterinario(Veterinario veterinario)
         {
             var veterinarioEncontrado = _appContext.Veterinarios.FirstOrDefault(d => d.Id == veterinario.Id);

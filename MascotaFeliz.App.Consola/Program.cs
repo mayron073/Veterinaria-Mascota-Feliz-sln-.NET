@@ -2,6 +2,7 @@
 using MascotaFeliz.App.Dominio;
 using MascotaFeliz.App.Persistencia;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MascotaFeliz.App.Consola
 {
@@ -12,6 +13,7 @@ namespace MascotaFeliz.App.Consola
         private static IRepositorioMascota _repoMascota = new RepositorioMascota(new Persistencia.AppContext());
         private static IRepositorioHistoria _repoHistoria = new RepositorioHistoria(new Persistencia.AppContext());
         private static IRepositorioVisitas _repoVisita = new RepositorioVisitas(new Persistencia.AppContext());
+        private static IEnumerable<Mascota> listaMascotas {get;set;}
 
         static void Main(string[] args)
         {
@@ -19,33 +21,36 @@ namespace MascotaFeliz.App.Consola
 
             //AddVeterinario();
             //ActualizarVeterinario();
-            //EliminarVeterinario();
+            //EliminarVeterinario(16);
             //BuscarVeterinario();
             //ListarVeterinarios();
             
             //AddDueno();
             //BuscarDueno(3);
-            //EliminarDueno(6);
+            //EliminarDueno(15);
             //ListarDuenos();
             //ActualizarDueno();
 
             //AddMascota();
             //BuscarMascota(1);
             //ListarMascotas();
-            //EliminarMascota(2);
+            //EliminarMascota(10);
             //ActualizarMascota();
-            AsignarDuenos();
-            AsignarHistorias();
-            AsignarVeterinarios();
+            //AsignarDuenos();
+            //AsignarHistorias();
+            //AsignarVeterinarios();
             //GetDuenoId();
 
             //AddHistoriaO();
             //ActualizarHistoria();
-            //EliminarHistoria(1);
+            //EliminarHistoria(10);
+            //ListarVisistasH();
+            //AsignarVisita();
 
             //AddVisita();
             //ActualizarVisita(1);
-            //EliminarVisita(1);
+            //EliminarVisita(34);
+            //ListarVisitas();
         }
 
 //**************************************** D U E N O S ********************************************//
@@ -161,20 +166,14 @@ namespace MascotaFeliz.App.Consola
 
         private static void AsignarDuenos()
         {
-            var dueno = _repoMascota.AsignarDueno(6, 6);
+            var dueno = _repoMascota.AsignarDueno(10, 3);
             Console.WriteLine(dueno.Nombre+""+dueno.Apellido);
         }
 
         private static void AsignarHistorias()
         {
-            var historia = _repoMascota.AsignarHistoria(3,6);
+            var historia = _repoMascota.AsignarHistoria(9,9);
         }
-/*
-        private static void GetDuenoId()
-        {
-            var dueno = _repoMascota.GetDuenoId(4);
-            Console.WriteLine(dueno);
-        }*/
 
 //**************************************** V E T E R I N A R I O ****************************************//
         // Metodo que agrega un nuevo veterinario.
@@ -234,7 +233,7 @@ namespace MascotaFeliz.App.Consola
         {
             var historia = new Historia
             {
-                FechaInicial = new DateTime(2022, 10, 15)
+                FechaInicial = new DateTime(2022, 7, 7)
             };
             _repoHistoria.AddHistoria(historia);
         }
@@ -253,6 +252,42 @@ namespace MascotaFeliz.App.Consola
         private static void EliminarHistoria(int idHistoria)
         {
             _repoHistoria.DeleteHistoria(idHistoria);
+        }
+
+        private static void ListarVisistasH()
+        {
+            var visitas = _repoHistoria.GetVisitasHistoria(2);
+            foreach (var v in visitas)
+            {
+                Console.WriteLine("peso: "+ v.Id);
+            }
+        }
+
+        private static void AsignarVisita()
+        {
+            var visita = new Visita
+            {
+                FechaDeVisita = new DateTime(2022, 7, 7),
+                Temperatura = 20.5F,
+                Peso = 10.5F,
+                FrecuenciaRespiratoria = 10.0F,
+                FrecuenciaCardiaca = 10.5F,
+                EstadoMental = "Feliz",
+                Recomendaciones = "Ninguna",
+                IdVeterinario = 9
+            };
+
+            List<Mascota> mascota = new List<Mascota>();
+            IEnumerable<Mascota> pets = mascota as IEnumerable<Mascota>;
+
+            //pets = _repoMascota.GetMascota(9);
+            int id = _repoMascota.GetHistoriaId(3);
+
+            _repoHistoria.AsignarVisitas(25, 7);
+            Console.WriteLine(id);
+            
+            
+      
         }
 
 //******************************** V I S I T A S ************************************//
@@ -277,7 +312,7 @@ namespace MascotaFeliz.App.Consola
             _repoVisita.DeleteVisita(idVisita);
         }
 
-        private static void ActualizarVisita(int idVisita)
+        private static void ActualizarVisita()
         {
             var visita = new Visita
             {
@@ -291,7 +326,16 @@ namespace MascotaFeliz.App.Consola
                 //IdVeterinario = 2,
             };
 
-            _repoVisita.UpdateVisita(visita, idVisita);
+            _repoVisita.UpdateVisita(visita);
+        }
+
+        private static void ListarVisitas()
+        {
+            var visita = _repoVisita.GetAllVisitas();
+            foreach (Visita m in visita)
+            {
+                Console.WriteLine("\npeso: "+ m.Peso + "\nanimo: " + m.EstadoMental );
+            }
         }
 
 

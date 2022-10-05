@@ -15,37 +15,31 @@ namespace MascotaFeliz.App.Frontend.Pages
         public IEnumerable<Mascota> listaMascotas {get; set;}
 
         public string Filtro {get;set;}
-        private int flag {get;set;} 
 
         public ListaMascotasModel()
         {
             this._repoMascota = new RepositorioMascota(new Persistencia.AppContext());
-            this.flag = 0;
         }
 
         public void OnGet()
         {
-            if (flag == 0)
+            if (String.IsNullOrEmpty(Filtro))
             {
                 listaMascotas = _repoMascota.GetAllMascotas(); 
-            }
-            if (flag == 1)
-            {
-                listaMascotas = _repoMascota.GetMascotaPorFiltro(Filtro);
-            }
-                   
+            }               
+
         }
 
         public IActionResult OnPost(string filtro)
         {
-            if (filtro.Length > 0)
+            if (!String.IsNullOrEmpty(filtro))
             {
-                Filtro = filtro;
-                flag = 1;
+                listaMascotas = _repoMascota.GetMascotaPorFiltro(filtro);
                 return Page();
             }
             else
             {
+                listaMascotas = _repoMascota.GetAllMascotas(); 
                 return Page();
             }
             

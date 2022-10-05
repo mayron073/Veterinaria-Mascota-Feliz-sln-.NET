@@ -22,25 +22,22 @@
             <form method="post">
                 <select name="ansType" id="ansType">
                     <option value="n">Nombre</option>
-                    <option value="d">Dueño</option>
-                    <option value="v">Veterinario</option>
+                    <option value="d">Pronto...</option>
                 </select>
                 <input type="ans" id="ans" asp-for="Filtro" placeholder="consulte">
                 <input type="submit" value="Consultar">
             </form>
+            <a class="btn-a" asp-page="/Visitas/RegistroVisitas">Visitas</a>
         </div>
         <div class="table">
             <table>
                 <thead>
                     <tr class="colums">
-                        <th scope="col"><strong>Id</strong></th>
                         <th scope="col"><strong>Nombre</strong></th>
-                        <th scope="col"><strong>Color</strong></th>
                         <th scope="col"><strong>Raza</strong></th>
-                        <th scope="col"><strong>Especie</strong></th>  
                         <th scope="col"><strong>Dueño</strong></th>  
-                         <th scope="col"><strong>Veterinario</strong></th>      
-                        <th scope="col"><strong>Info</strong></th>
+                        <th scope="col"><strong>Veterinario</strong></th>      
+                        <th scope="col"><strong>Editar</strong></th>
                     </tr>
                 </thead>
                 <div class="Tbody">
@@ -48,16 +45,19 @@
                         @foreach (var mascota in Model.listaMascotas)
                         {
                             <tr class="rows">
-                                <th scope="row">@mascota.Id</th>
+                                
                                 <td>@mascota.Nombre</td>
-                                <td>@mascota.Color</td>
+                             
                                 <td>@mascota.Raza</td>
-                                <td>@mascota.Especie</td>
+    
                                 <td>@mascota.Dueno.Nombre</td>
                                 <td>@mascota.Veterinario.Nombre</td>
                                 <td>
                                     <a class="btn" asp-page="./DetallesMascota" asp-route-IdMascota="@mascota.Id">
-                                        Detalle
+                                        Ver
+                                    </a>
+                                    <a class="btn" asp-page="/Historias/ListaHistorias" asp-route-IdMascota="@mascota.Id">
+                                        Historia
                                     </a>
                                     <a class="btn" asp-page="./EditarMascotas" asp-route-idMascota="@mascota.Id">
                                         Editar
@@ -65,6 +65,7 @@
                                     <a class="btn" asp-page="./Asignar" asp-route-idMascota="@mascota.Id">
                                         Asignar
                                     </a>
+                                    
                                 </td>
                                 
                             </tr>

@@ -3,26 +3,38 @@
 @{
 }
 
-<h1>Informacion del propietario</h1>
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/StyleDetalles.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="top">
+                <img class="img" src="~/lib/Images/employee1.png" alt="">
+                <h4>Informacion del propietario</h4>
+            </div>
+            <div class="info">
+                <div>
+                    Id: @Model.dueno.Id
+                </div>
+                <div>
+                    Nombre: @Model.dueno.Nombre
+                </div>
+                <div>
+                    Apellido: @Model.dueno.Apellido
+                </div>
+                <div>
+                Telefono: @Model.dueno.Telefono
+                </div>
+                <div>
+                    Direccion: @Model.dueno.Direccion
+                </div>
+                <div>
+                    Correo: @Model.dueno.Correo
+                </div>
+            </div>        
+            <a href="./ListaDuenos" class="btn-default">Lista de dueños</a>
+        </div>
+    </body>
+</html>
 
-<div class="box">
-    <div>
-        Id: @Model.dueno.Id
-    </div>
-    <div>
-        Nombre: @Model.dueno.Nombre
-    </div>
-    <div>
-        Apellido: @Model.dueno.Apellido
-    </div>
-    <div>
-       Telefono: @Model.dueno.Telefono
-    </div>
-    <div>
-        Direccion: @Model.dueno.Direccion
-    </div>
-    <div>
-        Correo: @Model.dueno.Correo
-    </div>
-</div>
-<a href="./ListaDuenos" class="btn-default">Lista de dueños</a>

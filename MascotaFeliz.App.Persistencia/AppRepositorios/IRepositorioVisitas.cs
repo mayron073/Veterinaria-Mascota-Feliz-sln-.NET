@@ -10,9 +10,8 @@ namespace MascotaFeliz.App.Persistencia
     {
         IEnumerable<Visita> GetAllVisitas();
         Visita AddVisita(Visita visita);
-        Visita UpdateVisita(Visita visita, int idVisita);
+        Visita UpdateVisita(Visita visita);
         void DeleteVisita(int idVisita);
         Visita GetVisita(int idVisita);
-        IEnumerable<Visita> GetVisitasPorFiltro(string filtro);
     }
 }

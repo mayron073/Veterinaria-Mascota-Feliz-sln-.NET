@@ -2,29 +2,42 @@
 @model MascotaFeliz.App.Frontend.Pages.DetallesMascotaModel
 @{
 }
-<h1>Informacion del la mascota</h1>
 
-<div class="box">
-    <div>
-        Id: @Model.mascota.Id
-    </div>
-    <div>
-        Nombre: @Model.mascota.Nombre
-    </div>
-    <div>
-        Color: @Model.mascota.Color
-    </div>
-    <div>
-        Raza: @Model.mascota.Raza
-    </div>
-    <div>
-        Especie: @Model.mascota.Especie
-    </div>
-    <div>
-        Dueño: @Model.mascota.Dueno.Nombre
-    </div>
-    <div>
-        Veterinario: @Model.mascota.Veterinario.Nombre
-    </div>
-</div>
-<a href="./ListaMascotas" class="btn-default">Lista de mascotas</a>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/StyleDetalles.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="top">
+                <img class="img-pet" src="~/lib/Images/pngegg.png" alt="">
+                <h4>Informacion del la mascota</h4>
+            </div>
+            <div class="info">
+                <div>
+                    Id: @Model.mascota.Id
+                </div>
+                <div>
+                    Nombre: @Model.mascota.Nombre
+                </div>
+                <div>
+                    Color: @Model.mascota.Color
+                </div>
+                <div>
+                    Raza: @Model.mascota.Raza
+                </div>
+                <div>
+                    Especie: @Model.mascota.Especie
+                </div>
+                <div>
+                    Dueño: @Model.mascota.Dueno.Nombre 
+                </div>
+                <div>
+                    Veterinario: @Model.mascota.Veterinario.Nombre
+                </div>
+            </div>        
+            <a asp-page="./ListaMascotas" class="btn-default">Lista de mascotas</a>
+        </div>
+    </body>
+</html>

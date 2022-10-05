@@ -9,7 +9,7 @@ namespace MascotaFeliz.App.Persistencia
     public class RepositorioMascota : IRepositorioMascota
     {
         /// <summary>
-        /// Referencia al contexto de Dueno
+        /// Referencia al contexto
         /// </summary>
         private readonly AppContext _appContext;
         /// <summary>
@@ -23,6 +23,7 @@ namespace MascotaFeliz.App.Persistencia
             _appContext = appContext;
         }
 
+//  Metodo que agrega una mascota.
         public Mascota AddMascota(Mascota mascota)
         {
             var mascotaAdicionada = _appContext.Mascotas.Add(mascota);
@@ -30,6 +31,7 @@ namespace MascotaFeliz.App.Persistencia
             return mascotaAdicionada.Entity;
         }
 
+//  Metodo que elimina una mascota.
         public void DeleteMascota(int idMascota)
         {
             var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(d => d.Id == idMascota);
@@ -39,18 +41,23 @@ namespace MascotaFeliz.App.Persistencia
             _appContext.SaveChanges();
         }
 
+// Metodo que retorna una lista de todas las mascotas.
         public IEnumerable<Mascota> GetAllMascotas()
         {
             return _appContext.Mascotas.Include("Dueno").Include("Veterinario").Include("Historia");
         }
 
-
+//  Metodo que retorna una mascota.
         public Mascota GetMascota(int idMascota)
         {
-            return _appContext.Mascotas.Include("Dueno").Include("Veterinario").FirstOrDefault(d => d.Id == idMascota);
-
+            var mascota = _appContext.Mascotas.Where(d => d.Id == idMascota)
+                                              .Include("Dueno").Include("Veterinario").Include("Historia")
+                                              .FirstOrDefault();
+                                              
+            return mascota;
         }
 
+// Metodo que retorna mascotas filtradas por nombre.
         public IEnumerable<Mascota> GetMascotaPorFiltro(string filtro)
         {
             var mascota = GetAllMascotas(); // Obtiene todos los saludos
@@ -64,6 +71,7 @@ namespace MascotaFeliz.App.Persistencia
             return mascota;
         }
 
+//  Metodo que actualiza una mascota.
         public Mascota UpdateMascota(Mascota mascota)
         {
             var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(d => d.Id == mascota.Id);
@@ -75,11 +83,13 @@ namespace MascotaFeliz.App.Persistencia
                 mascotaEncontrada.Raza = mascota.Raza;
                 mascotaEncontrada.Dueno = mascota.Dueno;
                 mascotaEncontrada.Veterinario = mascota.Veterinario;
+                mascotaEncontrada.Historia = mascota.Historia;
                 _appContext.SaveChanges();
             }
             return mascotaEncontrada;
         }
 
+//  Metodo que asigna un vetrinario a una mascota.
         public Veterinario AsignarVeterinario(int idVeterinario, int idMascota)
         {
             var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
@@ -96,6 +106,7 @@ namespace MascotaFeliz.App.Persistencia
             return null;
         }
 
+//  Metodo que asigna un dueno a una mascota.
         public Dueno AsignarDueno(int idDueno, int idMascota)
         {
             var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(m => m.Id == idMascota);
@@ -112,6 +123,7 @@ namespace MascotaFeliz.App.Persistencia
             return null;
         }
 
+//  Metodo que asigna una historia a una mascota.
         public Historia AsignarHistoria(int idHistoria, int idMascota)
         {
             var mascotaEncontrada = _appContext.Mascotas.FirstOrDefault(d => d.Id == idMascota);
@@ -126,6 +138,46 @@ namespace MascotaFeliz.App.Persistencia
                 return historiaEncontrada;
             }
             return null;
+        }
+
+//  Metodo que retorna una mascota como lista.
+        public IEnumerable<Mascota> GetHistoriaMascota(int mascotaId)
+        {
+            var mascotas = GetAllMascotas();
+            
+            if (mascotas != null)
+            {
+                var mascota = from m in mascotas
+                              where m.Id == mascotaId
+                              select m;
+
+                return mascota;  
+            }
+            else
+            {
+                return null;
+            }          
+                                              
+        }
+
+//  Metodo que retorna el Id de la historia de una mascota.
+        public int GetHistoriaId(int mascotaId)
+        {
+            var mascota = GetHistoriaMascota(mascotaId);
+            int historiaId = 0;
+
+            if (mascota != null)
+            {
+                foreach (var item in mascota)
+                {
+                    historiaId = item.Historia.Id;
+                }
+                return historiaId;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
     } 

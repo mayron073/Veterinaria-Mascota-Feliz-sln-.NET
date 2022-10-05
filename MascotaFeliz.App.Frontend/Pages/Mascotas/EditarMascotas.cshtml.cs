@@ -20,6 +20,7 @@ namespace MascotaFeliz.App.Frontend.Pages
         public Mascota mascota {get;set;}
         public Veterinario veterinario {get;set;}
         public Dueno dueno {get;set;}
+        public Historia historia {get;set;}
 
         public IEnumerable<Dueno> listaDuenos {get;set;}
         public IEnumerable<Veterinario> listaVeterinarios {get;set;}
@@ -53,7 +54,7 @@ namespace MascotaFeliz.App.Frontend.Pages
             }
         }
 
-        public IActionResult OnPost(int duenoId, int veterinarioId)
+        public IActionResult OnPost(int duenoId, int veterinarioId, DateTime historiaDT)
         {
             if (!ModelState.IsValid)
             {
@@ -61,20 +62,30 @@ namespace MascotaFeliz.App.Frontend.Pages
             }
             if (mascota.Id > 0)
             {
+                historia = new Historia();
+                historia.FechaInicial = historiaDT;
+                historia = _repoHistoria.UpdateHistoria(historia);
+
                 dueno = _repoDueno.GetDueno(duenoId);
                 veterinario = _repoVeterinario.GetVeterinario(veterinarioId);
 
                 mascota.Dueno = dueno;
                 mascota.Veterinario = veterinario;
+                mascota.Historia = historia;
 
                 mascota = _repoMascota.UpdateMascota(mascota);
                 return RedirectToPage("./ListaMascotas");
             }
             else
             {
+                historia = new Historia();
+                historia.FechaInicial = historiaDT;
+                historia = _repoHistoria.AddHistoria(historia);
                 _repoMascota.AddMascota(mascota);
+
                 _repoMascota.AsignarDueno(duenoId, mascota.Id);
                 _repoMascota.AsignarVeterinario(veterinarioId, mascota.Id);
+                _repoMascota.AsignarHistoria(historia.Id, mascota.Id);
                 
                 return RedirectToPage("./ListaMascotas");
             }

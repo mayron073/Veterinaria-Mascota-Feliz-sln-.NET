@@ -1,0 +1,84 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.RegistroVisitasModel
+@{
+    int visitaId = Model.visita.Id;
+}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+        <link rel="stylesheet" href="~/css/StyleFormVisit.css">
+    </head>
+
+    <body>
+        <div class="box">
+            <h1 class="A">Registro de VisitasPyP</h1>
+            <form method="post" class="form-group">
+                <div class="inputs Id" >
+                    <!--ID-->
+                    <input type="hidden" asp-for="visita.Id" class="id">
+                </div>
+                <div class="col1">
+                    <div class="browser">
+                        <label asp-for="mascota.Id">Mascotas</label>
+                        <select class="form-control" id="mascota" asp-for="mascota.Id" name="mascotaId">
+                            <option value="0">--Selecciona--</option>
+                            @foreach (var mascota in Model.listaMascotas)
+                            {
+                                <option value="@mascota.Id">@mascota.Nombre</option>
+                            }
+                        </select>                   
+                    </div>
+                    <div class="inputs name">                
+                        <label asp-for="visita.FechaDeVisita"></label>
+                        <input  type="datetime-local" asp-for="visita.FechaDeVisita" class="form-control">
+                    </div>
+                    <div class="inputs color">
+                        <label asp-for="visita.Temperatura"></label>
+                        <input asp-for="visita.Temperatura" class="form-control">
+                    </div>
+                    <div class="inputs raza">
+                        <label asp-for="visita.Peso"></label>
+                        <input asp-for="visita.Peso" class="form-control" >
+                    </div>
+                    <div class="inputs especie">
+                        <label asp-for="visita.FrecuenciaRespiratoria"></label>
+                        <input asp-for="visita.FrecuenciaRespiratoria" class="form-control">
+                    </div>
+                </div>
+                <div class="col2">
+                     <div class="inputs">
+                        <label asp-for="visita.FrecuenciaCardiaca"></label>
+                        <input asp-for="visita.FrecuenciaCardiaca" class="form-control">
+                    </div>
+                    <div class="inputs fechaInicial">
+                        <label asp-for="visita.EstadoMental"></label>
+                        <input asp-for="visita.EstadoMental" class="form-control">
+                    </div>
+                    <div class="browser">
+                        <label asp-for="visita.IdVeterinario">Veterinarios</label>
+                        <select class="form-control" id="veterinario" asp-for="visita.IdVeterinario" name="veterinarioId">
+                            <option value="0">--Selecciona--</option>
+                            @foreach (var veterinario in Model.listaVeterinarios)
+                            {
+                                <option value="@veterinario.Id">@veterinario.Nombre @veterinario.Apellido</option>
+                            }
+                        </select>                   
+                    </div>  
+                    <div class="inputs fechaInicial">
+                        <label asp-for="visita.Recomendaciones"></label>
+                        <input asp-for="visita.Recomendaciones" class="form-control">
+                    </div>
+                </div>
+               
+                 <div class="botones">
+                    <input type="submit" value="Guardar">
+                </div>  
+                                              
+            </form>
+           
+        </div>
+
+    </body>
+</html>

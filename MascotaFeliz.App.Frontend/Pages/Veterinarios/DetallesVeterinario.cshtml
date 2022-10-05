@@ -3,22 +3,37 @@
 @{
 }
 
-<h1>Informacio del veterinario</h1>
-<div class="box">
-    <div>
-        Id: @Model.veterinario.Id
-    </div>
-    <div>
-        Nombre: @Model.veterinario.Nombre
-    </div>
-    <div>
-        Apellido: @Model.veterinario.Apellido
-    </div>
-    <div>
-        Direccion: @Model.veterinario.Direccion
-    </div>
-    <div>
-        Tarjeta profesional: @Model.veterinario.TarjetaProfesional
-    </div>
-</div>
-<a href="./ListaVeterinarios" class="btn-default">Lista de veterinarios</a>
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/StyleDetalles.css">
+    </head>
+    <body>
+        <div class="box">
+            <div class="top">
+                <img class="img" src="~/lib/Images/employee1.png" alt="">
+                <h4>Informacio del veterinario</h4>
+            </div>
+            <div class="info">
+                <div>
+                    Id: @Model.veterinario.Id
+                </div>
+                <div>
+                    Nombre: @Model.veterinario.Nombre
+                </div>
+                <div>
+                    Apellido: @Model.veterinario.Apellido
+                </div>
+                <div>
+                    Telefono: @Model.veterinario.Telefono
+                </div>
+                <div>
+                    Direccion: @Model.veterinario.Direccion
+                </div>
+                <div>
+                    Tarjeta profesional: @Model.veterinario.TarjetaProfesional
+                </div>
+            </div>        
+            <a href="./ListaVeterinarios" class="btn-default">Lista de veterinarios</a>
+        </div>
+    </body>
+</html>

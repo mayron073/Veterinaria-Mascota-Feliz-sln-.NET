@@ -9,7 +9,7 @@ namespace MascotaFeliz.App.Persistencia
     public class RepositorioHistoria : IRepositorioHistoria
     {
         /// <summary>
-        /// Referencia al contexto de Dueno
+        /// Referencia al contexto 
         /// </summary>
         private readonly AppContext _appContext;
         /// <summary>
@@ -23,14 +23,16 @@ namespace MascotaFeliz.App.Persistencia
         {
             _appContext = appContext;
         }
-
+        
+//  Metodo que agrega una historia nueva.
         public Historia AddHistoria(Historia historia)
         {
             var historiaAgregada = _appContext.Historias.Add(historia);
             _appContext.SaveChanges();
             return historiaAgregada.Entity;
         }
-
+        
+// Metodo que elimina una historia.
         public void DeleteHistoria(int idHistoria)
         {
             var historiaEncontrada = _appContext.Historias.FirstOrDefault(d => d.Id == idHistoria);
@@ -40,21 +42,19 @@ namespace MascotaFeliz.App.Persistencia
             _appContext.SaveChanges();
         }
 
+//  Metodo que obtiene todas las historias y sus visitas.
         public IEnumerable<Historia> GetAllHistorias()
         {
-            return _appContext.Historias;
+            return _appContext.Historias.Include("Visitas");
         }
 
-        public IEnumerable<Historia> GetHistoriasPorFiltro(string filtro)
-        {
-            return _appContext.Historias;
-        }
-
+//  Metodo que obtiene una historia.
         public Historia GetHistoria(int idHistoria)
         {
             return _appContext.Historias.FirstOrDefault(d => d.Id == idHistoria);
         }
 
+//  Metodo que actualiza una historia.
         public Historia UpdateHistoria(Historia historia)
         {
             var historiaEncontrada = _appContext.Historias.FirstOrDefault(d => d.Id == historia.Id);
@@ -68,12 +68,33 @@ namespace MascotaFeliz.App.Persistencia
             return historiaEncontrada;
         }
 
+//  Metodo que obtiene una lista de las visistas de una historia.
         IEnumerable<Visita> IRepositorioHistoria.GetVisitasHistoria(int idHistoria)
         {
             var historia = _appContext.Historias.Where(h => h.Id == idHistoria)
                                                 .Include(h => h.Visitas)
                                                 .FirstOrDefault();
             return historia.Visitas;
+        }
+
+// Metodo que asigna visitas a una historia.
+        public IEnumerable<Visita> AsignarVisitas(int idVisita, int idHistoria)
+        {
+            var historiaEncontrada = _appContext.Historias.FirstOrDefault(h => h.Id == idHistoria);
+            
+            if (historiaEncontrada != null)
+            {
+                var visitaEncontrada = _appContext.Visitas.FirstOrDefault(v => v.Id == idVisita);
+                if (visitaEncontrada != null)
+                {
+                    List<Visita> visitas = new List<Visita>();
+                    visitas.Add(visitaEncontrada);
+                    historiaEncontrada.Visitas = visitas;
+                    _appContext.SaveChanges();
+                }
+                return historiaEncontrada.Visitas;
+            }
+            return null;
         }
 
     }

@@ -1,25 +1,24 @@
 body {
-    background-image: url("~/lib/Images/wallhaven-1j8g69.jpg");
-    background-position: center center;
+    background-color: #d0e7e8;
     font-family: 'Rock Salt', cursive;
 }
 
 .form-group {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 /*contenido*/
 .box {
+    margin-top: 15px;
     position: relative;
     background: #D3CEDF;   
     box-shadow: 2px 2px 5px rgb(62, 65, 255); 
     border-radius: 10px 10px;
-    width: 550px;
+    width: 580px;
     height: 500px;
-    left: 2%;
-    right: 5%;
+    left: 27%;
+   
 }
 
 
@@ -29,6 +28,7 @@ body {
     margin-left: 220px;
     width: 110px;
     height: 100px;
+    margin-left: 235px;
 }
 
 /*edit h1*/
@@ -37,16 +37,23 @@ body {
     font-size: 15px;
     text-align: center;
     font-weight: bold;
-    margin: 5px 0px 20px;
+    margin: 5px 0px 10px;
+}
+
+.col1 {
+    width: 45%;
+}
+.col2 {
+    width: 45%;
 }
 
 
 /*edit entradas*/
 .form-control {
     border: none;   
-    width: 70%;
+    width: 80%;
     margin-right: 30px;
-    margin-left: 40px;
+    margin-left: 28px;
     margin-top: 0px;
     outline-color: #0AA1DD;
     border-radius: 6px 6px;
@@ -57,27 +64,13 @@ body {
     color: #0F3460;
 }
 
-.box input[type = 'hiden']{
-    border: none;
-    width: 30%;
-    margin-right: 30px;
-    margin-left: 40px;
-    margin-top: 35px;
-    margin-bottom: 0px;
-    outline-color: #0AA1DD;
-    border-radius: 6px 6px;
-    background: #F0F0F0;
-    padding: 7px 15px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #0F3460;
-}
+
 
 label {
     margin-bottom: 0px;
     margin-top: 15px;
     font-size: 12px;
-    margin-left: 45px;
+    margin-left: 50px;
     width: 90%
 }
 
@@ -87,15 +80,18 @@ label {
     border: none;
     width: 80px;
     padding: 10px;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 30px;
     color: #0F3460;
     background: #319DA0;
     font-size: 15px;
     font-weight: bold;
     border-radius: 20px 20px;
     box-shadow: 3px 5px 10px gray;
+}
+
+.box input[type = 'submit']{
+    position: absolute;
+    right: 235px;
+    margin-top: 290px;
 }
 
 /*edit color del boton*/
@@ -108,6 +104,7 @@ label {
     flex-direction: row;
     justify-content: space-between;
 }
+
 .btn-default {
     margin-right: 245px;
     margin-top: 30px;

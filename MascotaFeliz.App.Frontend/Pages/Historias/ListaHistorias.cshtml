@@ -1,0 +1,38 @@
+﻿@page
+@model MascotaFeliz.App.Frontend.Pages.ListaHistoriasModel
+@{
+}
+
+<html>
+    <head>
+        <link href="~/css/StyleCHistorias.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="Box">
+             <div class="top">
+                <h2>Historia medica</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="colums">
+                        <th scope="col"><strong>Fecha de visita</strong></th>
+                        <th scope="col"><strong>Info</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var visita in Model.listaVisitas)
+                        {
+                            <tr class="rows">
+                                <td>@visita.FechaDeVisita</td>
+                                <td>
+                                    <a class="btn" asp-page="/Visitas/DetallesVisita" asp-route-visitaId="@visita.Id">
+                                                Detalles
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                </tbody>                
+            </table>
+        </div>
+    </body>
+</html>
